@@ -4,7 +4,7 @@ project(TicTacToe)
 
 set(CMAKE_CXX_STANDARD 11)
 
-option(BUILD_SHARED_LIBS "Build shared (dynamic) library instead of static" OFF)
+option(BUILD_SHARED_LIBS "Build as shared library" OFF)
 
 add_subdirectory(lib)
 
