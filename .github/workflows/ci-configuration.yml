@@ -2,22 +2,30 @@ name: CI_KalinichenkoArtem_3-21
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+
+    - name: Build project
+      run: |
+        cd build
+        cmake --build .
+
+    - name: Run program
+      run: |
+        cd build
+        ./TTC
