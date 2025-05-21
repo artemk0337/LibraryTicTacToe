@@ -1,11 +1,9 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "settings.hpp"
 
 
-inline int boardSize = 3;
-inline std::string player1 = "User1";
-inline std::string player2 = "User2";
 
 
 void startGame();
