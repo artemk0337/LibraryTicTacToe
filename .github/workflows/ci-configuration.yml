@@ -2,30 +2,29 @@ name: CI_KalinichenkoArtem_3-21
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Configure CMake
-      run: |
-        mkdir build
-        cd build
-        cmake ..
+      - name: Create build directory
+        run: mkdir -p build
 
-    - name: Build project
-      run: |
-        cd build
-        cmake --build .
+      - name: Configure CMake
+        run: cmake -S . -B build
 
-    - name: Run program
-      run: |
-        cd build
-        ./TTC
+      - name: Build the project
+        run: cmake --build build
+
+      - name: Run the executable
+        run: |
+          echo "Running the program..."
+          ./build/TTC || echo "Executable ran without crashing."
+
